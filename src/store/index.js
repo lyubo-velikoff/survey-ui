@@ -49,8 +49,13 @@ const store = createStore(
 )
 
 /* Setting up auth */
-if (localStorage.user) {    
-    store.dispatch(setUser(localStorage.user))
+if (localStorage.user) {
+    try {
+        const user = JSON.parse(localStorage.user)
+        store.dispatch(setUser(user))
+    } catch (err) {
+        localStorage.clear()
+    }
 }
 
 export default store

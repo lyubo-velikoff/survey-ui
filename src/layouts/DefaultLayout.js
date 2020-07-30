@@ -17,8 +17,9 @@ class DefaultLayout extends Component {
 
         return (
             <div className="default-layout text-center">
-                <div className='title'>Hello {user}</div>
-                <button className='button' onClick={logoutAction}>Logout</button>
+                <div className='title'>Hello {user && user.name ? user.name : ''}</div>
+                <button className='button mt-8' onClick={logoutAction}>Logout</button>
+                {this.props.children}
             </div>
         )
     }

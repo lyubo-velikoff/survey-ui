@@ -11,7 +11,7 @@ export const Login = Loadable({
 })
 
 /**
- * Dashboard page
+ * Home page
  */
 export const Home = Loadable({
     loader: () => import(/* webpackChunkName: "home" */'../pages/home/index'),
@@ -19,7 +19,7 @@ export const Home = Loadable({
 })
 
 /**
- * Devices page
+ * Manage page
  */
 export const Manage = Loadable({
     loader: () => import(/* webpackChunkName: "manage" */'../pages/manage/index'),

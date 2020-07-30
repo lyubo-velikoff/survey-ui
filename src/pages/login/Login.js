@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import LoadingIndicator from '../../components/loading/LoadingIndicator'
 import LoginForm from '../../components/form/LoginForm'
-import { loginAction } from '../../store/actions'
+import { loginAction, registerAction } from '../../store/actions'
 
 class Login extends Component {
 
@@ -20,11 +20,20 @@ class Login extends Component {
         this.mounted = false
     }
 
-    onSubmit = () => {
-        this.props.loginAction('Lyubo')
+    onLogin = ({ name }) => {
+        this.props.loginAction(name)
+            .then(() => {
+                console.log('authenticated')
+                this.props.auth.isAuthenticated && this.redirect()
+            }).catch(err => alert(err))
+    }
+
+    onRegister = ({ name, gender, postcode, dob }) => {
+        this.props.registerAction({ name, gender, postcode, dob })
             .then(() => {
                 this.props.auth.isAuthenticated && this.redirect()
             })
+            .catch(err => alert(err))
     }
     
     redirect() {
@@ -38,7 +47,7 @@ class Login extends Component {
         return (
             <div className='login-page'>
                 {isLoading && <LoadingIndicator />}
-                <LoginForm loginHandle={this.onSubmit} errorMessage={'error'} />
+                <LoginForm loginHandle={this.onLogin} registerHandle={this.onRegister} errorMessage={'error'} />
             </div>
         )
     }
@@ -52,5 +61,5 @@ const mapStateToProps = ({ auth }) => {
 }
 
 export default withRouter(
-    connect(mapStateToProps, { loginAction })(Login)
+    connect(mapStateToProps, { loginAction, registerAction })(Login)
 )
