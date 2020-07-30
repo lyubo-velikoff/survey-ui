@@ -1,0 +1,3 @@
+/* Authentication */
+export const AUTHENTICATED = 'AUTHENTICATED_USER'
+export const UNAUTHENTICATED = 'UNAUTHENTICATED_USER'

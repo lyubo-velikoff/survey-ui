@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    @apply relative w-full h-full m-0 p-0 text-gray-400 font-sans bg-dark;
+}
+
+.button {
+    @apply bg-transparent text-gray-400 font-semibold py-1 px-8 border border-gray-400 rounded shadow cursor-pointer;
+    &:hover {
+        @apply bg-gray-400 text-gray-800 shadow-lg;
+    }
+}
+
+.title {
+    @apply text-2xl py-2 font-bold;
+}
+
+.login-form {
+    @apply text-center;
+}
