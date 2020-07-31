@@ -51,6 +51,7 @@ const store = createStore(
 /* Setting up auth */
 if (localStorage.user) {
     try {
+        // TODO: Login first to check if user still exists
         const user = JSON.parse(localStorage.user)
         store.dispatch(setUser(user))
     } catch (err) {

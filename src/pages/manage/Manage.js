@@ -19,7 +19,7 @@ class Manage extends Component {
     render() {
 
         return (
-            <div className="Manage-page">
+            <div className="manage-page">
                 <h1>Manage page</h1>
             </div>
         )

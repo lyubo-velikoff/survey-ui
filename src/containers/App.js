@@ -11,7 +11,7 @@ import {
     NotFound
 } from '../utils/lazyLoad'
 
-export default () => (
+const App = () => (
     <Switch>
         <CustomRoute path="/" exact layout={DefaultLayout} component={Home} />
         <CustomRoute path="/manage" exact layout={DefaultLayout} component={Manage} />
@@ -19,3 +19,5 @@ export default () => (
         <PublicRoute path="*" exact layout={EmptyLayout} component={NotFound} />
     </Switch>
 )
+
+export default App

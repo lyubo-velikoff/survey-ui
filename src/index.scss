@@ -40,4 +40,17 @@ body {
     &:focus {
         @apply outline-none bg-white border-gray-800;
     }
+    &.completed {
+        @apply border-green-500 border-4;
+    }
+}
+
+.nav-link {
+    @apply block mt-4 inline-block p-2;
+    &.is-active {
+        @apply font-bold underline;
+    }
+    @screen sm {
+        @apply text-3xl;
+    }
 }

@@ -35,11 +35,11 @@ export const register = (user) => {
 }
 
 /* Question */
-export const getAvailableQuestions = (filters = {}) => {
+export const getAvailableQuestions = (userId, filters = {}) => {
     let queryString = setupQueryString(filters)
     return axios({
         method: 'get',
-        url: `${baseUrl}/users/1/questions${queryString}`,
+        url: `${baseUrl}/users/${userId}/questions${queryString}`,
     }).then(res => res = res.data).catch(err => handleError(err))
 }
 
@@ -49,5 +49,13 @@ export const getAnswers = (filters = {}) => {
     return axios({
         method: 'get',
         url: `${baseUrl}/answers${queryString}`,
+    }).then(res => res = res.data).catch(err => handleError(err))
+}
+
+export const answerQuestion = ({ userId, questionId, answerId }) => {
+    return axios({
+        method: 'post',
+        url: `${baseUrl}/users/${userId}/answers`,
+        data: JSON.stringify({ questionId, answerId }),
     }).then(res => res = res.data).catch(err => handleError(err))
 }
