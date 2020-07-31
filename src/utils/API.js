@@ -43,6 +43,37 @@ export const getAvailableQuestions = (userId, filters = {}) => {
     }).then(res => res = res.data).catch(err => handleError(err))
 }
 
+export const getQuestions = (filters = {}) => {
+    let queryString = setupQueryString(filters)
+    return axios({
+        method: 'get',
+        url: `${baseUrl}/questions${queryString}`,
+    }).then(res => res = res.data).catch(err => handleError(err))
+}
+
+export const addQuestion = (question) => {
+    return axios({
+        method: 'post',
+        url: `${baseUrl}/questions`,
+        data: JSON.stringify(question),
+    }).then(res => res = res.data).catch(err => handleError(err))
+}
+
+export const updateQuestion = (questionId, question) => {
+    return axios({
+        method: 'put',
+        url: `${baseUrl}/questions/${questionId}`,
+        data: question,
+    }).then(res => res = res.data).catch(err => handleError(err))
+}
+
+export const deleteQuestion = (questionId) => {
+    return axios({
+        method: 'delete',
+        url: `${baseUrl}/questions/${questionId}`,
+    }).then(res => res = res.data).catch(err => handleError(err))
+}
+
 /* Answer */
 export const getAnswers = (filters = {}) => {
     let queryString = setupQueryString(filters)

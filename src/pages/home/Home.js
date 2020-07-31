@@ -33,12 +33,10 @@ class Home extends Component {
     render() {
         const { questions, answers } = this.props
         return (
-            <div className="home-page">
-                <div className='mt-8 py-8 text-left max-w-xl m-auto'>
-                    <PossibleOptions answers={answers} />
-                    <div className='my-8'><hr /></div>
-                   <ListQuestions questions={questions} answers={answers} handleSelect={this.handleChange} />
-                </div>
+            <div className="home-page mt-8 py-8 text-left max-w-xl m-auto">
+                <PossibleOptions answers={answers} />
+                <div className='my-8'><hr /></div>
+                <ListQuestions questions={questions} answers={answers} handleSelect={this.handleChange} />
             </div>
         )
     }

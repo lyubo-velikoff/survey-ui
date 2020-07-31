@@ -5,5 +5,12 @@ export const AUTHENTICATION_ERROR = 'AUTHENTICATION_ERROR'
 
 /* General Actions */
 export const GET_AVAILABLE_QUESTIONS = 'GET_AVAILABLE_QUESTIONS'
+
+/* Answer */
 export const GET_ANSWERS = 'GET_ANSWERS'
 export const ANSWER_QUESTION = 'ANSWER_QUESTION'
+
+/* Question */
+export const ADD_QUESTION = 'ADD_QUESTION'
+export const UPDATE_QUESTION = 'UPDATE_QUESTION'
+export const DELETE_QUESTION = 'DELETE_QUESTION'

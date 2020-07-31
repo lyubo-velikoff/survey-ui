@@ -1,7 +1,10 @@
 import { 
     GET_AVAILABLE_QUESTIONS,
     GET_ANSWERS,
-    ANSWER_QUESTION
+    ANSWER_QUESTION,
+    ADD_QUESTION,
+    UPDATE_QUESTION,
+    DELETE_QUESTION
 } from '../actions/types'
 
 const initialState = {
@@ -21,6 +24,7 @@ const checkAnswered = (state, action) => {
 }
 
 export default (state = initialState, action) => {
+    let index = -1
     switch(action.type) {
         case GET_AVAILABLE_QUESTIONS:
             return {
@@ -32,8 +36,31 @@ export default (state = initialState, action) => {
                 ...state,
                 answers: action.answers && action.answers.data? [ ...action.answers.data ] : []
             }
+        case ADD_QUESTION:
+            return {
+                ...state,
+                questions: [
+                    ...state.questions,
+                    action.question
+                ]
+            }
+        case UPDATE_QUESTION:
+            index = state.questions.findIndex(question => question.id === (action.question && action.question.id ? action.question.id : 0))
+            return {
+                ...state,
+                ...(index !== -1
+                    ? {
+                        questions: [
+                            ...state.questions.slice(0, index),
+                            action.question,
+                            ...state.questions.slice(index + 1),
+                        ]
+                    }
+                    : {}
+                )
+            }
         case ANSWER_QUESTION:
-            const index = checkAnswered(state, action)
+            index = checkAnswered(state, action)
             return {
                 ...state,
                 ...(index !== -1
@@ -50,6 +77,11 @@ export default (state = initialState, action) => {
                     }
                     : {}
                 )
+            }
+        case DELETE_QUESTION:
+            return {
+                ...state,
+                questions: state.questions.filter(question => question.id !== action.questionId)
             }
         default:
             return state

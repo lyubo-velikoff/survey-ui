@@ -6,34 +6,35 @@ body {
     @apply relative w-full h-full m-0 p-0 text-gray-400 font-sans bg-dark;
 }
 
+/* Button stuff */
+
 .button {
     @apply bg-transparent text-gray-400 font-semibold py-1 px-8 border border-gray-400 rounded shadow cursor-pointer;
-    &:hover {
+    &:hover, &.active {
         @apply bg-gray-400 text-gray-800 shadow-lg;
     }
+    &.button-green {
+        @apply border-green-500 text-green-500;
+        &:hover, &.active {
+            @apply bg-green-500 text-gray-400;
+        }
+    }
+    
 }
+
+/* Typography stuff */
 
 .title {
     @apply text-2xl py-2 font-bold;
 }
 
-.login-form {
-    @apply text-center p-4;
-}
-.input {
-    @apply bg-gray-200 appearance-none border-2 border-gray-400 rounded w-full py-1 px-2 text-gray-700 leading-tight text-sm;
-     &:focus {
-        @apply outline-none bg-white border-gray-800;
-     }
-}
-
-.label {
-    @apply block text-gray-400 text-sm mb-2 text-left;
-}
+/* Layout stuff */
 
 .default-layout {
     @apply max-w-screen-xl m-auto p-4;
 }
+
+/* Form stuff */
 
 .select {
     @apply block appearance-none w-full bg-gray-400 border border-gray-400 text-gray-900 py-2 px-3 pr-8 rounded leading-tight;
@@ -45,6 +46,23 @@ body {
     }
 }
 
+.label {
+    @apply block text-gray-400 text-sm mb-2 text-left;
+}
+
+.login-form {
+    @apply text-center p-4;
+}
+
+.input {
+    @apply bg-gray-200 appearance-none border-2 border-gray-400 rounded w-full py-1 px-2 text-gray-700 leading-tight text-sm;
+     &:focus {
+        @apply outline-none bg-white border-gray-800;
+     }
+}
+
+/* Nav Stuff */
+
 .nav-link {
     @apply block mt-4 inline-block p-2;
     &.is-active {
@@ -53,4 +71,10 @@ body {
     @screen sm {
         @apply text-3xl;
     }
+}
+
+/* Table ovverides */
+
+table {
+    @apply w-full;
 }

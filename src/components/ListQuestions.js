@@ -1,8 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-
-
 const Option = ({ id, title }) => (
     <option value={id}>{title}</option>
 )
@@ -20,7 +18,6 @@ const SelectField = ({ question, answers, handleSelect }) => {
         </select>
     )
 }
-
 
 const Question = ({ question, answers, handleSelect }) => (
     <div className='mt-8'>
