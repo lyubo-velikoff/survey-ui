@@ -1,18 +1,20 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {
+    getQuestionsAction,
     getGenderDemographicAction,
     getPostcodeDemographicAction,
     getAgeRangeDemographicAction,
     getAvgWeeklyResponsesAction,
-    getQuestionsAction
+    getUserListBelowSdvaAction,
 } from '../../store/actions'
 import Chart from '../../components/Chart'
 import {
     setupGenderDemographicProps,
     setupPostcodeDemographicProps,
     setupAgeDemographicProps,
-    setupAvgWeeklyResponsesProps
+    setupAvgWeeklyResponsesProps,
+    setupUserListBellowSdva
 } from '../../utils/charts'
 
 class Reports extends Component {
@@ -37,6 +39,7 @@ class Reports extends Component {
         this.props.getPostcodeDemographicAction(filters)
         this.props.getAgeRangeDemographicAction(filters)
         this.props.getAvgWeeklyResponsesAction(filters)
+        this.props.getUserListBelowSdvaAction(filters)
     }
 
     onQuestionFilter = (e) => {
@@ -48,11 +51,12 @@ class Reports extends Component {
     }
 
     render() {
-        const { questions, genderData, postcodeData, ageRangeData, avgWeeklyResponsesData } = this.props
+        const { questions, genderData, postcodeData, ageRangeData, avgWeeklyResponsesData, userListBellowSdvaData } = this.props
         const genderChartOptions = setupGenderDemographicProps(genderData)
         const postcodeChartOptions = setupPostcodeDemographicProps(postcodeData)
         const ageRangeOptions = setupAgeDemographicProps(ageRangeData)
         const avgWeeklyResponsesOptions = setupAvgWeeklyResponsesProps(avgWeeklyResponsesData)
+        const userListBellowSdvaOptions = setupUserListBellowSdva(userListBellowSdvaData)
         return (
             <div className='reports-page mt-8 py-8 text-left max-w-xl lg:max-w-screen-xl m-auto'>
 
@@ -68,9 +72,6 @@ class Reports extends Component {
 
                 <div className='flex-wrap lg:flex'>
                     <div className='w-full lg:w-1/2'>
-                        <Chart {...avgWeeklyResponsesOptions} />
-                    </div>
-                    <div className='w-full lg:w-1/2'>
                         <Chart {...genderChartOptions} />
                     </div>
                     <div className='w-full lg:w-1/2'>
@@ -78,6 +79,13 @@ class Reports extends Component {
                     </div>
                     <div className='w-full lg:w-1/2'>
                         <Chart {...postcodeChartOptions} />
+                    </div>
+                    <div className='w-full lg:w-1/2'>
+                        <Chart {...avgWeeklyResponsesOptions} />
+                        <Chart {...userListBellowSdvaOptions} />
+
+                    </div>
+                    <div className='w-full lg:w-1/2'>
                     </div>
                 </div>
             </div>
@@ -87,18 +95,20 @@ class Reports extends Component {
 
 const mapStateToProps = ({ report, general }) => {
     return {
+        questions: general.questions || [],
         genderData: report.gender,
         postcodeData: report.postcode,
         ageRangeData: report.ageRange,
         avgWeeklyResponsesData: report.avgWeeklyResponses,
-        questions: general.questions || []
+        userListBellowSdvaData: report.userListBellowSdva ,
     }
 }
 
 export default connect(mapStateToProps, {
+    getQuestionsAction,
     getGenderDemographicAction,
     getPostcodeDemographicAction,
     getAgeRangeDemographicAction,
     getAvgWeeklyResponsesAction,
-    getQuestionsAction
+    getUserListBelowSdvaAction,
 })(Reports)

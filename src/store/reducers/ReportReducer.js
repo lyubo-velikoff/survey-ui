@@ -2,7 +2,8 @@ import {
     GET_DEMOGRAPHIC_GENDER,
     GET_DEMOGRAPHIC_POSTCODE,
     GET_DEMOGRAPHIC_AGE,
-    GET_STATISTIC_AVG_WEEKLY_RESPONSES
+    GET_STATISTIC_AVG_WEEKLY_RESPONSES,
+    GET_STATISTIC_USER_LIST_BELLOW_SDVA
 } from '../actions/types'
 
 const initialState = {
@@ -10,6 +11,7 @@ const initialState = {
     postcode: [],
     ageRange: [],
     avgWeeklyResponses: [],
+    userListBellowSdva: [],
 }
 
 export default (state = initialState, action) => {
@@ -33,6 +35,11 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 avgWeeklyResponses: action.data || []
+            }
+        case GET_STATISTIC_USER_LIST_BELLOW_SDVA:
+            return {
+                ...state,
+                userListBellowSdva: action.data || []
             }
         default:
             return state

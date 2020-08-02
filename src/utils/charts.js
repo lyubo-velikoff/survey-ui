@@ -15,7 +15,7 @@ const genderDescription = {
 
 export const setupGenderDemographicProps = (data) => {
     return {
-        title: 'Demographic gender',
+        title: '3a. Demographic gender',
         height: '300px',
         chartType: 'ColumnChart',
         data: [
@@ -45,7 +45,7 @@ export const setupGenderDemographicProps = (data) => {
 export const setupAvgWeeklyResponsesProps = (data) => {
     console.log(data)
     return {
-        title: 'Statistic avg weekly responses',
+        title: '4a. Statistic avg response per answer type per week',
         height: '300px',
         chartType: 'ColumnChart',
         data: [
@@ -80,7 +80,7 @@ export const setupAvgWeeklyResponsesProps = (data) => {
 
 export const setupAgeDemographicProps = (data) => {
     return {
-        title: 'Demographic age range',
+        title: '3b. Demographic age range',
         height: '300px',
         chartType: 'ColumnChart',
         data: [
@@ -115,7 +115,7 @@ export const setupAgeDemographicProps = (data) => {
 
 export const setupPostcodeDemographicProps = (data) => {
     return {
-        title: 'Demographic postcode',
+        title: '3a. Demographic postcode',
         chartType: 'BarChart',
         data: [
             ['Postcode', 'Not at all', ' Several days', 'More than half the days', 'Nearly every day'],
@@ -139,6 +139,37 @@ export const setupPostcodeDemographicProps = (data) => {
             },
             legend: 'top',
             height: '700px',
+        }
+    }
+}
+
+export const setupUserListBellowSdva = (data) => {
+    return {
+        title: '4b. Statistic list of users bellow 1 sdva',
+
+        chartType: 'Table',
+        data: [
+            ['Row', 'User name'],
+            ...(data.map(({ userName }, key) => {
+                return [ key + 1, userName ]
+            }))
+        ],
+        options: {
+            height: '285px',
+            animation: { ...defaultAnimation, },
+            backgroundColor: defaultBgColor,
+            chartArea: { width: '70%', height: '80%' },
+            colors: defaultColors,
+            text: { color: 'black'},
+            vAxis: {
+                title: '',
+            },
+            hAxis: {
+                title: 'Answers',
+                format: '0',
+
+            },
+            legend: 'top',
         }
     }
 }

@@ -122,3 +122,10 @@ export const getAvgWeeklyResponses = (filters = {}) => {
         url: `${baseUrl}/reports/statistic/avg-weekly-responses${queryString}`,
     }).then(res => res = res.data).catch(err => handleError(err))
 }
+
+export const getUserListBelowSdva = () => {
+    return axios({
+        method: 'get',
+        url: `${baseUrl}/reports/statistic/list-users-bellow-sdva`,
+    }).then(res => res = res.data).catch(err => handleError(err))
+}

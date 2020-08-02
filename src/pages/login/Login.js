@@ -20,8 +20,8 @@ class Login extends Component {
         this.mounted = false
     }
 
-    onLogin = ({ name }) => {
-        this.props.loginAction(name)
+    onLogin = ({ loginName }) => {
+        this.props.loginAction(loginName)
             .then(() => {
                 console.log('authenticated')
                 this.props.auth.isAuthenticated && this.redirect()

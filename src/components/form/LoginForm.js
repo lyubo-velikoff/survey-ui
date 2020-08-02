@@ -19,7 +19,12 @@ class LoginForm extends Component {
                             </div>
                             <div className='mb-4'>
                                 <label className='label' htmlFor="gender">Gender *</label>
-                                <Field name="gender" component="input" type="text" className='input' placeholder='"m", "f" or "o"' />
+                                <Field name="gender" component="select" className='select'>
+                                    <option></option>
+                                    <option value="m">Male</option>
+                                    <option value="f">Female</option>
+                                    <option value="o">Other</option>
+                                </Field>
                             </div>
                             <div className='mt-4'>
                                 <label className='label' htmlFor="postcode">Postcode *</label>
@@ -37,7 +42,7 @@ class LoginForm extends Component {
                         <form onSubmit={handleSubmit(loginHandle)} className='max-w-sm m-auto'>
                             <div className='mb-4'>
                                 <label className='label' htmlFor="name">Name *</label>
-                                <Field  name="name" component="input" type="text" className='input' placeholder='Your name' />
+                                <Field  name="loginName" component="input" type="text" className='input' placeholder='Your name' />
                             </div>
                             <button className='button mt-4' type="submit" disabled={invalid || submitting || false}>Login</button>
                         </form>

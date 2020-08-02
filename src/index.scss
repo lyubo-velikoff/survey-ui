@@ -52,6 +52,9 @@ body {
 
 .login-form {
     @apply text-center p-4;
+    .select {
+        @extend .input;
+    }
 }
 
 .input {
@@ -76,5 +79,5 @@ body {
 /* Table ovverides */
 
 table {
-    @apply w-full;
+    @apply w-full bg-gray-500 text-black;
 }

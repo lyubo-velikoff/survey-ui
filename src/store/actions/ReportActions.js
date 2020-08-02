@@ -3,7 +3,8 @@ import {
     GET_DEMOGRAPHIC_GENDER,
     GET_DEMOGRAPHIC_POSTCODE,
     GET_DEMOGRAPHIC_AGE,
-    GET_STATISTIC_AVG_WEEKLY_RESPONSES
+    GET_STATISTIC_AVG_WEEKLY_RESPONSES,
+    GET_STATISTIC_USER_LIST_BELLOW_SDVA
 } from '../actions/types'
 
 export const getGenderDemographic = (data) => ({    
@@ -66,6 +67,22 @@ export const getAvgWeeklyResponsesAction = (filters) => {
             alert(JSON.stringify(data.errors))
         } else {
             dispatch(getAvgWeeklyResponses(data))
+        }
+    }
+}
+
+export const getUserListBelowSdva = (data) => ({    
+    type: GET_STATISTIC_USER_LIST_BELLOW_SDVA,
+    data,
+})
+
+export const getUserListBelowSdvaAction = () => {
+    return async(dispatch) => {
+        const data = await API.getUserListBelowSdva()
+        if (data && data.errors) {
+            alert(JSON.stringify(data.errors))
+        } else {
+            dispatch(getUserListBelowSdva(data))
         }
     }
 }
