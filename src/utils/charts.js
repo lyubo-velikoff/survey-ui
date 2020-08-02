@@ -7,6 +7,12 @@ const defaultAnimation = {
     duration: 500,
 }
 
+const genderDescription = {
+    m: 'Male',
+    f: 'Female',
+    o: 'Other'
+}
+
 export const setupGenderDemographicProps = (data) => {
     return {
         title: 'Demographic gender',
@@ -14,8 +20,8 @@ export const setupGenderDemographicProps = (data) => {
         chartType: 'ColumnChart',
         data: [
             ['Gender', 'Not at all', 'Several days', 'More than half the days', 'Nearly every day'],
-            ...(data.map(({ gender, notAtAll, severalDays, halfDays, everyDay}) => {
-                return [ gender === 'f' ? 'Female' : 'Male', notAtAll, severalDays, halfDays, everyDay ]
+            ...(data.map(({ gender, notAtAll, severalDays, halfDays, everyDay }) => {
+                return [genderDescription[gender], notAtAll, severalDays, halfDays, everyDay]
             }))
         ],
         options: {
@@ -31,7 +37,7 @@ export const setupGenderDemographicProps = (data) => {
                 title: '',
                 gridlines: { color: defaultGridLineColor }
             },
-            legend: { position: 'top'  },
+            legend: { position: 'top' },
         }
     }
 }
@@ -57,17 +63,17 @@ export const setupAvgWeeklyResponsesProps = (data) => {
         options: {
             animation: { ...defaultAnimation, },
             backgroundColor: defaultBgColor,
-            chartArea: { width: '80%',  },
+            chartArea: { width: '80%', },
             colors: defaultColors,
             vAxis: {
                 title: '',
-                gridlines: { color: defaultGridLineColor }, 
+                gridlines: { color: defaultGridLineColor },
             },
             hAxis: {
                 title: '',
                 gridlines: { color: defaultGridLineColor },
             },
-            legend: { position: 'top'  },
+            legend: { position: 'top' },
         }
     }
 }
@@ -102,7 +108,7 @@ export const setupAgeDemographicProps = (data) => {
                 title: '',
                 gridlines: { color: defaultGridLineColor }
             },
-            legend: { position: 'top'  },
+            legend: { position: 'top' },
         }
     }
 }
@@ -113,8 +119,8 @@ export const setupPostcodeDemographicProps = (data) => {
         chartType: 'BarChart',
         data: [
             ['Postcode', 'Not at all', ' Several days', 'More than half the days', 'Nearly every day'],
-            ...(data.map(({ postcode, notAtAll, severalDays, halfDays, everyDay}) => {
-                return [ postcode, notAtAll, severalDays, halfDays, everyDay ]
+            ...(data.map(({ postcode, notAtAll, severalDays, halfDays, everyDay }) => {
+                return [postcode, notAtAll, severalDays, halfDays, everyDay]
             }))
         ],
         options: {

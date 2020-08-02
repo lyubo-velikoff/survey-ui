@@ -19,7 +19,7 @@ class LoginForm extends Component {
                             </div>
                             <div className='mb-4'>
                                 <label className='label' htmlFor="gender">Gender *</label>
-                                <Field name="gender" component="input" type="text" className='input' placeholder='"m" or "f"' />
+                                <Field name="gender" component="input" type="text" className='input' placeholder='"m", "f" or "o"' />
                             </div>
                             <div className='mt-4'>
                                 <label className='label' htmlFor="postcode">Postcode *</label>
