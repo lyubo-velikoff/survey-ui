@@ -23,6 +23,7 @@ class DefaultLayout extends Component {
                         <nav>
                             <NavLink exact to='/' className='nav-link' activeClassName='is-active'>Home</NavLink>
                             <NavLink exact to='/manage' className='nav-link ml-4 md:ml-0' activeClassName='is-active'>Manage</NavLink>
+                            <NavLink exact to='/reports' className='nav-link ml-4 md:ml-0' activeClassName='is-active'>Reports</NavLink>
                         </nav>
                     )
                     : null

@@ -8,6 +8,7 @@ import {
     Login,
     Home,
     Manage,
+    Reports,
     NotFound
 } from '../utils/lazyLoad'
 
@@ -15,6 +16,7 @@ const App = () => (
     <Switch>
         <CustomRoute path="/" exact layout={DefaultLayout} component={Home} />
         <CustomRoute path="/manage" exact layout={DefaultLayout} component={Manage} />
+        <CustomRoute path="/reports" exact layout={DefaultLayout} component={Reports} />
         <PublicRoute path="/login" exact layout={EmptyLayout} component={Login} />
         <PublicRoute path="*" exact layout={EmptyLayout} component={NotFound} />
     </Switch>

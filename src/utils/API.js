@@ -90,3 +90,35 @@ export const answerQuestion = ({ userId, questionId, answerId }) => {
         data: JSON.stringify({ questionId, answerId }),
     }).then(res => res = res.data).catch(err => handleError(err))
 }
+
+/* Report */
+export const getGenderDemographic = (filters = {}) => {
+    let queryString = setupQueryString(filters)
+    return axios({
+        method: 'get',
+        url: `${baseUrl}/reports/demographic/gender${queryString}`,
+    }).then(res => res = res.data).catch(err => handleError(err))
+}
+
+export const getPostcodeDemographic = (filters = {}) => {
+    let queryString = setupQueryString(filters)
+    return axios({
+        method: 'get',
+        url: `${baseUrl}/reports/demographic/postcode${queryString}`,
+    }).then(res => res = res.data).catch(err => handleError(err))
+}
+export const getAgeRangeDemographic = (filters = {}) => {
+    let queryString = setupQueryString(filters)
+    return axios({
+        method: 'get',
+        url: `${baseUrl}/reports/demographic/age${queryString}`,
+    }).then(res => res = res.data).catch(err => handleError(err))
+}
+
+export const getAvgWeeklyResponses = (filters = {}) => {
+    let queryString = setupQueryString(filters)
+    return axios({
+        method: 'get',
+        url: `${baseUrl}/reports/statistic/avg-weekly-responses${queryString}`,
+    }).then(res => res = res.data).catch(err => handleError(err))
+}

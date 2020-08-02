@@ -1,0 +1,104 @@
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import {
+    getGenderDemographicAction,
+    getPostcodeDemographicAction,
+    getAgeRangeDemographicAction,
+    getAvgWeeklyResponsesAction,
+    getQuestionsAction
+} from '../../store/actions'
+import Chart from '../../components/Chart'
+import {
+    setupGenderDemographicProps,
+    setupPostcodeDemographicProps,
+    setupAgeDemographicProps,
+    setupAvgWeeklyResponsesProps
+} from '../../utils/charts'
+
+class Reports extends Component {
+
+    state = {
+        filters: {}
+    }
+
+    componentDidMount() {
+        this.mounted = true
+        this.loadCharts()
+    }
+
+    componentWillUnmount() {
+        this.mounted = false
+    }
+
+    loadCharts = () => {
+        const { filters } = this.state
+        this.props.getQuestionsAction()
+        this.props.getGenderDemographicAction(filters)
+        this.props.getPostcodeDemographicAction(filters)
+        this.props.getAgeRangeDemographicAction(filters)
+        this.props.getAvgWeeklyResponsesAction(filters)
+    }
+
+    onQuestionFilter = (e) => {
+        this.setState({ filters: { 
+            ...(e.target.value ? { questionId: e.target.value } : {})
+        }}, () => {
+            this.loadCharts()
+        })
+    }
+
+    render() {
+        const { questions, genderData, postcodeData, ageRangeData, avgWeeklyResponsesData } = this.props
+        const genderChartOptions = setupGenderDemographicProps(genderData)
+        const postcodeChartOptions = setupPostcodeDemographicProps(postcodeData)
+        const ageRangeOptions = setupAgeDemographicProps(ageRangeData)
+        const avgWeeklyResponsesOptions = setupAvgWeeklyResponsesProps(avgWeeklyResponsesData)
+        return (
+            <div className='reports-page mt-8 py-8 text-left max-w-xl lg:max-w-screen-xl m-auto'>
+
+                <div className='filters w-full lg:max-w-lg lg:p-4'>
+                    <label className='label'>Filter by question</label>
+                    <select className={`select`} onChange={this.onQuestionFilter}>
+                        <option></option>
+                        {questions.map(({ id, title }, key) => (
+                            <option key={key} value={id}>{id} - {title}</option>
+                        ))}
+                    </select>
+                </div>
+
+                <div className='flex-wrap lg:flex'>
+                    <div className='w-full lg:w-1/2'>
+                        <Chart {...avgWeeklyResponsesOptions} />
+                    </div>
+                    <div className='w-full lg:w-1/2'>
+                        <Chart {...genderChartOptions} />
+                    </div>
+                    <div className='w-full lg:w-1/2'>
+                        <Chart {...ageRangeOptions} />
+                    </div>
+                    <div className='w-full lg:w-1/2'>
+                        <Chart {...postcodeChartOptions} />
+                    </div>
+                </div>
+            </div>
+        )
+    }
+}
+
+const mapStateToProps = ({ report, general }) => {
+    return {
+        genderData: report.gender,
+        postcodeData: report.postcode,
+        ageRangeData: report.ageRange,
+        avgWeeklyResponsesData: report.avgWeeklyResponses,
+        questions: general.questions || []
+    }
+}
+
+export default connect(mapStateToProps, {
+    getGenderDemographicAction,
+    getPostcodeDemographicAction,
+    getAgeRangeDemographicAction,
+    getAvgWeeklyResponsesAction,
+    getQuestionsAction
+})(Reports)

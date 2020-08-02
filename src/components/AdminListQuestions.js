@@ -9,7 +9,7 @@ const useToggle = (initialState) => {
       [ setIsToggled ],
     )
     return [ isToggled, toggle ]
-  }
+}
 
 const AdminListQuestions = ({ questions, newQuestionHandle, priorityChangeHandle, deleteHandle }) => {
     const [ isAddNewToggled, toggleAddNew ] = useToggle(false)

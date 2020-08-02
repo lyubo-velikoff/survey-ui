@@ -27,6 +27,14 @@ export const Manage = Loadable({
 })
 
 /**
+ * Reports page
+ */
+export const Reports = Loadable({
+    loader: () => import(/* webpackChunkName: "reports" */'../pages/reports/index'),
+    loading: LoadingIndicator
+})
+
+/**
  * 404 page
  */
 export const NotFound = Loadable({
