@@ -1,6 +1,11 @@
 const defaultColors = ['#3182ce', '#48bb78', '#ed8936', '#e53e3e']
 const defaultGridLineColor = '#a0aec0'
 const defaultBgColor = '#cbd5e0'
+const defaultAnimation = {
+    startup: true,
+    easing: 'linear',
+    duration: 500,
+}
 
 export const setupGenderDemographicProps = (data) => {
     return {
@@ -14,6 +19,7 @@ export const setupGenderDemographicProps = (data) => {
             }))
         ],
         options: {
+            animation: { ...defaultAnimation, },
             backgroundColor: defaultBgColor,
             chartArea: { width: '80%' },
             colors: defaultColors,
@@ -49,16 +55,17 @@ export const setupAvgWeeklyResponsesProps = (data) => {
             }))
         ],
         options: {
+            animation: { ...defaultAnimation, },
             backgroundColor: defaultBgColor,
             chartArea: { width: '80%',  },
             colors: defaultColors,
             vAxis: {
                 title: '',
-                gridlines: { color: defaultGridLineColor }
+                gridlines: { color: defaultGridLineColor }, 
             },
             hAxis: {
                 title: '',
-                gridlines: { color: defaultGridLineColor }
+                gridlines: { color: defaultGridLineColor },
             },
             legend: { position: 'top'  },
         }
@@ -71,7 +78,7 @@ export const setupAgeDemographicProps = (data) => {
         height: '300px',
         chartType: 'ColumnChart',
         data: [
-            ['Age Range', '0 - Not at all', '1 - Several days', '2 - More than half the days', '3 - Nearly every day'],
+            ['Age Range', 'Not at all', 'Several days', 'More than half the days', 'Nearly every day'],
             ...(data.map((range) => {
                 return [
                     range['ageRange'],
@@ -83,6 +90,7 @@ export const setupAgeDemographicProps = (data) => {
             }))
         ],
         options: {
+            animation: { ...defaultAnimation, },
             backgroundColor: defaultBgColor,
             chartArea: { width: '80%' },
             colors: defaultColors,
@@ -110,6 +118,7 @@ export const setupPostcodeDemographicProps = (data) => {
             }))
         ],
         options: {
+            animation: { ...defaultAnimation, },
             backgroundColor: defaultBgColor,
             chartArea: { width: '70%', height: '80%' },
             colors: defaultColors,
