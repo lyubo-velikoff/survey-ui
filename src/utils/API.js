@@ -6,7 +6,7 @@ axios.defaults.headers.post['Content-Type'] = 'application/json'
 axios.defaults.validateStatus = function() { return true }
 
 /* Variables */
-const baseUrl = 'http://localhost:3001'
+const baseUrl = process.env.REACT_APP_API_URL
 
 const handleError = (err) => alert(err)
 
