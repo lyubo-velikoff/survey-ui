@@ -28,13 +28,13 @@ const AdminListQuestions = ({ questions, newQuestionHandle, priorityChangeHandle
             {questions.map(({ id, title, priority}, key) => (
                 <div className='flex flex-wrap mt-6' key={key}>
                     <div className='w-full sm:w-4/6'>{title}</div>
-                    <div className='w-full sm:w-1/6'>
-                        <label className='mt-2 block text-gray-500 font-bold'>
+                    <div className='w-1/2 sm:w-1/6'>
+                        <label className='mt-3 sm:mt-0 block text-gray-500 font-bold'>
                             <input checked={priority === 1 ? true : false} className='mr-2 leading-tight' type='checkbox' onChange={(e) => priorityChangeHandle(e, id)} />
                             <span className='text-sm sm:hidden'>Priority</span>
                         </label>
                     </div>
-                    <div className='w-full sm:w-1/6'>
+                    <div className='w-1/2 sm:w-1/6 text-right sm:text-left'>
                         <button className='text-red-600 font-bold mt-2 sm:mt-0 hidden sm:block' onClick={() => deleteHandle(id)}>X</button>
                         <button className='text-red-600 font-bold mt-2 sm:mt-0 sm:hidden' onClick={() => deleteHandle(id)}>Delete</button>
                     </div>

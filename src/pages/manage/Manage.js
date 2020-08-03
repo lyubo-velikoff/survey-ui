@@ -28,7 +28,9 @@ class Manage extends Component {
     }
 
     deleteQuestion = (questionId) => {
-        this.props.deleteQuestionAction(questionId)
+        if(window.confirm('Are you sure?')) {
+            this.props.deleteQuestionAction(questionId)
+        }
     }
 
     render() {
