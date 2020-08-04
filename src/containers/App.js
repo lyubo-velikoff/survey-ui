@@ -1,3 +1,6 @@
+/**
+ * App container imports
+*/
 import React from 'react'
 import { Switch } from 'react-router-dom'
 import CustomRoute from '../components/routes/PrivateRoute'
@@ -12,6 +15,9 @@ import {
     NotFound
 } from '../utils/lazyLoad'
 
+/**
+ * App container component
+ */
 const App = () => (
     <Switch>
         <CustomRoute path="/" exact layout={DefaultLayout} component={Home} />

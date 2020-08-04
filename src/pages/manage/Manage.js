@@ -1,3 +1,6 @@
+/**
+ * Manage page imports
+*/
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {
@@ -8,6 +11,9 @@ import {
 } from '../../store/actions'
 import AdminListQuestions from '../../components/AdminListQuestions'
 
+/**
+ * Manage page component
+ */
 class Manage extends Component {
 
     componentDidMount() {

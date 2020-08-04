@@ -1,3 +1,7 @@
+/**
+ * Check if property is an object
+ * @param { * } obj 
+ */
 export const isEmpty = (obj) => {
     if (obj !== undefined) {
         for(var prop in obj) {

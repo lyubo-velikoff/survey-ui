@@ -1,9 +1,15 @@
+/**
+ * Home page imports
+*/
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getAvailableQuestionsAction, getAnswersAction, answerQuestionAction } from '../../store/actions'
 import ListQuestions from '../../components/ListQuestions'
 import PossibleOptions from '../../components/PossibleOptions'
 
+/**
+ * Home page component
+ */
 class Home extends Component {
 
     state = {

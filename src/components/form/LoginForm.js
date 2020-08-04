@@ -1,7 +1,13 @@
+/**
+ * Login form component imports
+*/
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Field, reduxForm } from 'redux-form'
 
+/**
+ * Login form component
+ */
 class LoginForm extends Component {
 
     render() {
@@ -53,6 +59,9 @@ class LoginForm extends Component {
     }
 }
 
+/**
+ * Login form component prop types
+ */
 LoginForm.propTypes = {
     loginHandle: PropTypes.func.isRequired,
     registerHandle: PropTypes.func.isRequired,

@@ -1,7 +1,6 @@
 /* Authentication */
 export const AUTHENTICATED = 'AUTHENTICATED_USER'
 export const UNAUTHENTICATED = 'UNAUTHENTICATED_USER'
-export const AUTHENTICATION_ERROR = 'AUTHENTICATION_ERROR'
 
 /* Answer */
 export const GET_ANSWERS = 'GET_ANSWERS'

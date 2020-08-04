@@ -1,4 +1,7 @@
-import { 
+/**
+ * Action types import
+*/
+import {
     GET_AVAILABLE_QUESTIONS,
     ADD_QUESTION,
     UPDATE_QUESTION,
@@ -21,6 +24,11 @@ const initialState = {
     return state.questions.findIndex(question => question.id === (action.answer && action.answer.questionId ? action.answer.questionId : 0))
 }
 
+/**
+ * Question Reducer
+ * @param { Object } state 
+ * @param { Object } action 
+ */
 export default (state = initialState, action) => {
     let index = -1
     switch(action.type) {

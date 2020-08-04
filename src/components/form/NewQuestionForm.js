@@ -1,7 +1,13 @@
+/**
+ * New question form component imports
+*/
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Field, reduxForm, reset } from 'redux-form'
 
+/**
+ * New question form component
+ */
 class NewQuestionForm extends Component {
 
     render() {
@@ -29,9 +35,18 @@ class NewQuestionForm extends Component {
     }
 }
 
+/**
+ * New question form prop types
+ */
 NewQuestionForm.propTypes = {
     newQuestionHandle: PropTypes.func.isRequired,
 }
+
+/**
+ * Funtion that resets new question form
+ * @param {*} result 
+ * @param {*} dispatch 
+ */
 const afterSubmit = (result, dispatch) => dispatch(reset('new-question'))
 
 const reduxFormLogin = reduxForm({

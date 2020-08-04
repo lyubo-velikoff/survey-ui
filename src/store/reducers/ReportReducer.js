@@ -1,4 +1,7 @@
-import { 
+/**
+ * Action types import
+*/
+import {
     GET_DEMOGRAPHIC_GENDER,
     GET_DEMOGRAPHIC_POSTCODE,
     GET_DEMOGRAPHIC_AGE,
@@ -6,6 +9,9 @@ import {
     GET_STATISTIC_USER_LIST_BELLOW_SDVA
 } from '../actions/types'
 
+/**
+ * Reducer initial state
+ */
 const initialState = {
     gender: [],
     postcode: [],
@@ -14,6 +20,11 @@ const initialState = {
     userListBellowSdva: [],
 }
 
+/**
+ * Report Reducer
+ * @param { Object } state 
+ * @param { Object } action 
+ */
 export default (state = initialState, action) => {
     switch(action.type) {
         case GET_DEMOGRAPHIC_GENDER:

@@ -1,10 +1,21 @@
+/**
+ * List questions imports
+*/
 import React from 'react'
 import PropTypes from 'prop-types'
 
+/**
+ * Option component
+ * @param { Object } props
+ */
 const Option = ({ id, title }) => (
     <option value={id}>{title}</option>
 )
 
+/**
+ * Select field component
+ * @param { Object } props 
+ */
 const SelectField = ({ question, answers, handleSelect }) => {
     const onChangeHandle = (e, question) => {
         handleSelect(e, question)
@@ -19,6 +30,10 @@ const SelectField = ({ question, answers, handleSelect }) => {
     )
 }
 
+/**
+ * Question component
+ * @param { Object } props 
+ */
 const Question = ({ question, answers, handleSelect }) => (
     <div className='mt-8'>
         <div className='my-4 text-base md:text-xl'>{question.title}</div>
@@ -31,6 +46,10 @@ const Question = ({ question, answers, handleSelect }) => (
     </div>
 )
 
+/**
+ * List questions component
+ * @param { Object } props 
+ */
 const ListQuestions = ({ questions, answers, handleSelect }) => {
     return (
         <div className='questions'>
@@ -41,6 +60,9 @@ const ListQuestions = ({ questions, answers, handleSelect }) => {
     )
 }
 
+/**
+ * List questions prop types
+ */
 ListQuestions.propTypes = {
     questions: PropTypes.array,
     answers: PropTypes.array,

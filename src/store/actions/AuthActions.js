@@ -1,20 +1,27 @@
 import * as API from '../../utils/API'
-import { AUTHENTICATED, UNAUTHENTICATED, AUTHENTICATION_ERROR } from '../actions/types'
+import { AUTHENTICATED, UNAUTHENTICATED } from '../actions/types'
 import { isEmpty } from '../../utils/helpers'
 
+/**
+ * Send user action
+ * @param { Object } user 
+ */
 export const setUser = (user) => ({    
     type: AUTHENTICATED,
     user,
 })
 
+/**
+ * Unset user action
+ */
 export const unsetUser = () => ({    
     type: UNAUTHENTICATED,
 })
 
-export const setAuthError = () => ({    
-    type: AUTHENTICATION_ERROR,
-})
-
+/**
+ * Login - send request to api and dispatch action accordingly
+ * @param { String } user 
+ */
 export const loginAction = (user) => {
     return async(dispatch) => {
         const data = await API.login(user)
@@ -27,6 +34,10 @@ export const loginAction = (user) => {
     }
 }
 
+/**
+ * Register - send request to api to add a new user
+ * @param { Object } user 
+ */
 export const registerAction = (user) => {
     return async(dispatch) => {
         const data = await API.register(user)
@@ -39,6 +50,9 @@ export const registerAction = (user) => {
     }
 }
 
+/**
+ * Logout - clear local storage and send unset user action
+ */
 export const logoutAction = () => {
     return async(dispatch) => {
         localStorage.clear()

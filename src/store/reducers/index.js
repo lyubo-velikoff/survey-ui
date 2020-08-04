@@ -6,6 +6,9 @@ import ReportReducer from './ReportReducer'
 import QuestionReducer from './QuestionReducer'
 import AnswerReducer from './AnswerReducer'
 
+/**
+ * Combining reducers into one
+ */
 const rootReducer = combineReducers({
     form: formReducer,
     auth: AuthReducer,

@@ -1,3 +1,6 @@
+/**
+ * Login page imports
+*/
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
@@ -5,6 +8,9 @@ import LoadingIndicator from '../../components/loading/LoadingIndicator'
 import LoginForm from '../../components/form/LoginForm'
 import { loginAction, registerAction } from '../../store/actions'
 
+/**
+ * Login page component
+ */
 class Login extends Component {
 
     state = {
