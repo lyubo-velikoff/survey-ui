@@ -1,22 +1,18 @@
 import React, { Component } from 'react'
-// import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { getQuestionsAction, addQuestionAction, updateQuestionAction, deleteQuestionAction } from '../../store/actions'
+import {
+    getQuestionsAction,
+    addQuestionAction,
+    updateQuestionAction,
+    deleteQuestionAction
+} from '../../store/actions'
 import AdminListQuestions from '../../components/AdminListQuestions'
 
 class Manage extends Component {
 
-    state = {
-        isLoading: false,
-    }
-
     componentDidMount() {
         this.mounted = true
         this.props.getQuestionsAction()
-    }
-
-    componentWillUnmount() {
-        this.mounted = false
     }
 
     addQuestion = ({ title, priority }) => {
@@ -28,7 +24,7 @@ class Manage extends Component {
     }
 
     deleteQuestion = (questionId) => {
-        if(window.confirm('Are you sure?')) {
+        if(window.confirm(`Delete question ${questionId}?`)) {
             this.props.deleteQuestionAction(questionId)
         }
     }
@@ -48,9 +44,9 @@ class Manage extends Component {
     }
 }
 
-const mapStateToProps = ({ general }) => {
+const mapStateToProps = ({ question }) => {
     return {
-        questions: general.questions || [],
+        questions: question.questions || [],
     }
 }
 

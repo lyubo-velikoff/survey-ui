@@ -12,6 +12,26 @@ export const getGenderDemographic = (data) => ({
     data,
 })
 
+export const getPostcodeDemographic = (data) => ({    
+    type: GET_DEMOGRAPHIC_POSTCODE,
+    data,
+})
+
+export const getAgeRangeDemographic = (data) => ({    
+    type: GET_DEMOGRAPHIC_AGE,
+    data,
+})
+
+export const getAvgWeeklyResponses = (data) => ({    
+    type: GET_STATISTIC_AVG_WEEKLY_RESPONSES,
+    data,
+})
+
+export const getUserListBelowSdva = (data) => ({    
+    type: GET_STATISTIC_USER_LIST_BELLOW_SDVA,
+    data,
+})
+
 export const getGenderDemographicAction = (filters) => {
     return async(dispatch) => {
         const data = await API.getGenderDemographic(filters)
@@ -22,11 +42,6 @@ export const getGenderDemographicAction = (filters) => {
         }
     }
 }
-
-export const getPostcodeDemographic = (data) => ({    
-    type: GET_DEMOGRAPHIC_POSTCODE,
-    data,
-})
 
 export const getPostcodeDemographicAction = (filters) => {
     return async(dispatch) => {
@@ -39,11 +54,6 @@ export const getPostcodeDemographicAction = (filters) => {
     }
 }
 
-export const getAgeRangeDemographic = (data) => ({    
-    type: GET_DEMOGRAPHIC_AGE,
-    data,
-})
-
 export const getAgeRangeDemographicAction = (filters) => {
     return async(dispatch) => {
         const data = await API.getAgeRangeDemographic(filters)
@@ -55,10 +65,6 @@ export const getAgeRangeDemographicAction = (filters) => {
     }
 }
 
-export const getAvgWeeklyResponses = (data) => ({    
-    type: GET_STATISTIC_AVG_WEEKLY_RESPONSES,
-    data,
-})
 
 export const getAvgWeeklyResponsesAction = (filters) => {
     return async(dispatch) => {
@@ -70,11 +76,6 @@ export const getAvgWeeklyResponsesAction = (filters) => {
         }
     }
 }
-
-export const getUserListBelowSdva = (data) => ({    
-    type: GET_STATISTIC_USER_LIST_BELLOW_SDVA,
-    data,
-})
 
 export const getUserListBelowSdvaAction = () => {
     return async(dispatch) => {

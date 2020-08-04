@@ -93,9 +93,9 @@ class Reports extends Component {
     }
 }
 
-const mapStateToProps = ({ report, general }) => {
+const mapStateToProps = ({ report, question }) => {
     return {
-        questions: general.questions || [],
+        questions: question.questions || [],
         genderData: report.gender,
         postcodeData: report.postcode,
         ageRangeData: report.ageRange,
