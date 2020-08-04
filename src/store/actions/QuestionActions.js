@@ -1,6 +1,7 @@
 import * as API from '../../utils/API'
 import {
-    GET_AVAILABLE_QUESTIONS,
+    GET_AVAILABLE_QUESTION,
+    GET_QUESTIONS,
     ADD_QUESTION,
     UPDATE_QUESTION,
     DELETE_QUESTION
@@ -11,8 +12,17 @@ import {
  * @param { Object } questions 
  */
 export const getQuestions = (questions) => ({    
-    type: GET_AVAILABLE_QUESTIONS,
+    type: GET_QUESTIONS,
     questions,
+})
+
+/**
+ * Action creator - get available question
+ * @param { array } question 
+ */
+export const getAvailableQuestion = (question) => ({    
+    type: GET_AVAILABLE_QUESTION,
+    question,
 })
 
 /**
@@ -43,14 +53,13 @@ export const updateQuestion = (question) => ({
 })
 
 /**
- * Fetch api to get available questions for a user and dispatch an action creator
+ * Fetch api to get available question for a user and dispatch an action creator
  * @param { Integer } userId 
- * @param { Object } filters 
  */
-export const getAvailableQuestionsAction = (userId, filters) => {
+export const getAvailableQuestionAction = (userId) => {
     return async(dispatch) => {
-        const data = await API.getAvailableQuestions(userId, filters)
-        dispatch(getQuestions(data))
+        const data = await API.getAvailableQuestion(userId)
+        dispatch(getAvailableQuestion(data))
     }
 }
 

@@ -2,7 +2,8 @@
  * Action types import
 */
 import {
-    GET_AVAILABLE_QUESTIONS,
+    GET_AVAILABLE_QUESTION,
+    GET_QUESTIONS,
     ADD_QUESTION,
     UPDATE_QUESTION,
     DELETE_QUESTION,
@@ -32,7 +33,12 @@ const initialState = {
 export default (state = initialState, action) => {
     let index = -1
     switch(action.type) {
-        case GET_AVAILABLE_QUESTIONS:
+        case GET_AVAILABLE_QUESTION:
+            return {
+                ...state,
+                question: action.question && action.question.id ?  [ action.question ] : []
+            }
+        case GET_QUESTIONS:
             return {
                 ...state,
                 questions: action.questions && action.questions.data? [ ...action.questions.data ] : []
