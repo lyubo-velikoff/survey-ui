@@ -42,12 +42,16 @@ class Home extends Component {
     }
 }
 
-const mapStateToProps = ({ general, auth }) => {
+const mapStateToProps = ({ auth, question, answer }) => {
     return { 
-        questions: general.questions || [],
-        answers: general.answers || [],
+        questions: question.questions || [],
+        answers: answer.answers || [],
         auth: auth,
      }
 }
 
-export default connect(mapStateToProps, { getAvailableQuestionsAction, getAnswersAction, answerQuestionAction })(Home)
+export default connect(mapStateToProps, {
+    getAvailableQuestionsAction,
+    getAnswersAction,
+    answerQuestionAction
+})(Home)

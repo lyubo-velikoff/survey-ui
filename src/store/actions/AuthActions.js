@@ -18,7 +18,6 @@ export const setAuthError = () => ({
 export const loginAction = (user) => {
     return async(dispatch) => {
         const data = await API.login(user)
-        // TODO: better validation
         if (isEmpty(data) || data === '' || !data.hasOwnProperty('id')) {
             alert(`Unable to login ${JSON.stringify(data)}`) 
         } else {
