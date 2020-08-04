@@ -3,9 +3,8 @@
 */
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getAvailableQuestionsAction, getAnswersAction, answerQuestionAction } from '../../store/actions'
+import { getAvailableQuestionAction, getAnswersAction, answerQuestionAction } from '../../store/actions'
 import ListQuestions from '../../components/ListQuestions'
-import PossibleOptions from '../../components/PossibleOptions'
 
 /**
  * Home page component
@@ -13,36 +12,65 @@ import PossibleOptions from '../../components/PossibleOptions'
 class Home extends Component {
 
     state = {
-        isLoading: false,
+        selectedAnswer: 0,
     }
 
     componentDidMount() {
         this.mounted = true
         this.props.getAnswersAction()
-        this.props.getAvailableQuestionsAction(this.props.auth.user.id)
+        this.getAvailableQuestion()
     }
 
     componentWillUnmount() {
         this.mounted = false
     }
 
-    handleChange = (e, question) => {
-        if (e.target.value === '' || question.answered) return
+    /**
+     * Fetch api to get available question
+     */
+    getAvailableQuestion = () => {
+        this.props.getAvailableQuestionAction(this.props.auth.user.id)
+    }
+
+    /**
+     * ON select change
+     * @param { Integer } answerId 
+     */
+    handleChange = (answerId) => {
+        this.setState({ selectedAnswer: answerId })
+    }
+
+    /**
+     * On submit handle - user answers question
+     * @param { Object } question 
+     */
+    onSubmit = (question) => {
+        if (this.state.selectedAnswer === 0) return
+        this.setState({ selectedAnswer: 0 })
         const answer = {
             userId: this.props.auth.user.id,
-            answerId: parseInt(e.target.value, 16),
+            answerId: this.state.selectedAnswer,
             questionId: question.id,
         }
         this.props.answerQuestionAction(answer)
+            .then(() => {
+                // usually if submitted and ok set ok notification but for now just load new question
+                this.getAvailableQuestion()
+            })
     }
 
     render() {
         const { questions, answers } = this.props
+        const { selectedAnswer } = this.state
         return (
             <div className="home-page mt-8 py-8 text-left max-w-xl m-auto">
-                <PossibleOptions answers={answers} />
-                <div className='my-8'><hr /></div>
-                <ListQuestions questions={questions} answers={answers} handleSelect={this.handleChange} />
+                <ListQuestions
+                    questions={questions}
+                    answers={answers}
+                    handleSelect={this.handleChange}
+                    selectedAnswer={selectedAnswer}
+                    onSubmit={this.onSubmit}
+                />
             </div>
         )
     }
@@ -50,14 +78,14 @@ class Home extends Component {
 
 const mapStateToProps = ({ auth, question, answer }) => {
     return { 
-        questions: question.questions || [],
+        questions: question.question || [],
         answers: answer.answers || [],
         auth: auth,
      }
 }
 
 export default connect(mapStateToProps, {
-    getAvailableQuestionsAction,
+    getAvailableQuestionAction,
     getAnswersAction,
     answerQuestionAction
 })(Home)

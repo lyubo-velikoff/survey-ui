@@ -35,11 +35,10 @@ export const register = (user) => {
 }
 
 /* Question */
-export const getAvailableQuestions = (userId, filters = {}) => {
-    let queryString = setupQueryString(filters)
+export const getAvailableQuestion = (userId) => {
     return axios({
         method: 'get',
-        url: `${baseUrl}/users/${userId}/questions${queryString}`,
+        url: `${baseUrl}/users/${userId}/question`,
     }).then(res => res = res.data).catch(err => handleError(err))
 }
 
