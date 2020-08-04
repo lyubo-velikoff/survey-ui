@@ -1,3 +1,6 @@
+/**
+ * Reports page imports
+*/
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {
@@ -17,6 +20,9 @@ import {
     setupUserListBellowSdva
 } from '../../utils/charts'
 
+/**
+ * Reports page component
+ */
 class Reports extends Component {
 
     state = {

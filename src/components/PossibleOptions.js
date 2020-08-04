@@ -1,6 +1,13 @@
+/**
+ * Possible options component imports
+*/
 import React from 'react'
 import PropTypes from 'prop-types'
 
+/**
+ * Possible options component
+ * @param { Object } props 
+ */
 const PossibleOptions = ({ answers }) => (
     <div className='answers text-center'>
         <h3 className='font-bold'>Possible Options</h3>
@@ -10,6 +17,9 @@ const PossibleOptions = ({ answers }) => (
     </div>
 )
 
+/**
+ * Possible options prop types
+ */
 PossibleOptions.propTypes = {
     answers: PropTypes.array,
 }

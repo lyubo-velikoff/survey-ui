@@ -1,7 +1,14 @@
+/**
+ * Admin list questions component imports
+*/
 import React from 'react'
 import PropTypes from 'prop-types'
 import NewQuestionForm from './form/NewQuestionForm'
 
+/**
+ * Toggle state hook
+ * @param { Object } initialState 
+ */
 const useToggle = (initialState) => {
     const [ isToggled, setIsToggled ] = React.useState(initialState)
     const toggle = React.useCallback(
@@ -11,6 +18,10 @@ const useToggle = (initialState) => {
     return [ isToggled, toggle ]
 }
 
+/**
+ * Admin list questions component
+ * @param { Object } props 
+ */
 const AdminListQuestions = ({ questions, newQuestionHandle, priorityChangeHandle, deleteHandle }) => {
     const [ isAddNewToggled, toggleAddNew ] = useToggle(false)
     return (
@@ -44,6 +55,9 @@ const AdminListQuestions = ({ questions, newQuestionHandle, priorityChangeHandle
     )
 }
 
+/**
+ * Admin list questions prop types
+ */
 AdminListQuestions.propTypes = {
     questions: PropTypes.array,
     newQuestionHandle: PropTypes.func.isRequired,

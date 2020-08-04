@@ -1,3 +1,6 @@
+/**
+ * Some default variables here
+ */
 const defaultColors = ['#3182ce', '#48bb78', '#ed8936', '#e53e3e']
 const defaultGridLineColor = '#a0aec0'
 const defaultBgColor = '#cbd5e0'
@@ -13,6 +16,10 @@ const genderDescription = {
     o: 'Other'
 }
 
+/**
+ * Prepare chart options for gender demographic
+ * @param { Array } data 
+ */
 export const setupGenderDemographicProps = (data) => {
     return {
         title: '3a. Demographic gender',
@@ -42,6 +49,10 @@ export const setupGenderDemographicProps = (data) => {
     }
 }
 
+/**
+ * Prepare chart options for avg weekly responses
+ * @param { Array } data 
+ */
 export const setupAvgWeeklyResponsesProps = (data) => {
     console.log(data)
     return {
@@ -78,6 +89,10 @@ export const setupAvgWeeklyResponsesProps = (data) => {
     }
 }
 
+/**
+ * Prepare chart options for age range demographic
+ * @param { Array } data 
+ */
 export const setupAgeDemographicProps = (data) => {
     return {
         title: '3b. Demographic age range',
@@ -113,6 +128,10 @@ export const setupAgeDemographicProps = (data) => {
     }
 }
 
+/**
+ * Prepare chart options for postcode demographic
+ * @param { Array } data 
+ */
 export const setupPostcodeDemographicProps = (data) => {
     return {
         title: '3a. Demographic postcode',
@@ -143,6 +162,10 @@ export const setupPostcodeDemographicProps = (data) => {
     }
 }
 
+/**
+ * Prepare chart options for user list below 1 standard deviation statistic
+ * @param { Array } data 
+ */
 export const setupUserListBellowSdva = (data) => {
     return {
         title: '4b. Statistic list of users bellow 1 sdva',

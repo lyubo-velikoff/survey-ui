@@ -1,8 +1,14 @@
+/**
+ * Default layout imports
+*/
 import { withRouter, NavLink } from 'react-router-dom'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { logoutAction } from '../store/actions'
 
+/**
+ * Default layout component
+ */
 class DefaultLayout extends Component {
 
     state = {

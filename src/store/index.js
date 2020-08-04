@@ -5,9 +5,7 @@ import {
 } from 'redux'
 import thunk from 'redux-thunk'
 import reducer from './reducers'
-// import setAuthorizationToken from '../utils/setAuthorizationToken'
 import { setUser } from './actions/AuthActions'
-// import moment from 'moment'
 
 /**
  * Logger middleware
@@ -48,10 +46,11 @@ const store = createStore(
     )
 )
 
-/* Setting up auth */
+/**
+ * Setting up auth
+ */
 if (localStorage.user) {
     try {
-        // TODO: Login first to check if user still exists
         const user = JSON.parse(localStorage.user)
         store.dispatch(setUser(user))
     } catch (err) {

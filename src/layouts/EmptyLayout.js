@@ -1,5 +1,11 @@
+/**
+ * Empty layout imports
+*/
 import React, { Component } from 'react'
 
+/**
+ * Empty layout component
+ */
 class EmptyLayout extends Component {
     render() {
         return (
