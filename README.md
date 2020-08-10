@@ -2,9 +2,6 @@
 
 React JS project that uses react redux, react router, [TailwindCSS](https://tailwindcss.com/), axios
 
-**Live demo** Hosted on heroku
-[https://lyubo-survey-ui.herokuapp.com/](https://lyubo-survey-ui.herokuapp.com/)
-
 ## Project dependency
 
 [Project Backend](https://github.com/lyubo-velikoff/survey-backend) - using nodejs express, express-validator, sequelize, postgres, jest, supertest
